@@ -1,4 +1,5 @@
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.enums import TA_LEFT, TA_JUSTIFY
 
 
 class FontSetter:
@@ -10,25 +11,27 @@ class FontSetter:
         self.style = "normal"
         self.font = 12
         self.indent = 0
+        self.alignment = TA_LEFT
 
-        self.commands = {".large": self.setTextFormat("bold", 15),
-                         ".normal": self.setTextFormat(self.style, 12),
-                         ".italics": self.setTextFormat("italics", self.font),
-                         ".regular": self.setTextFormat(self.style, 12),
-                         ".indent": self.setTextFormat(self.style, 12),
-                         ".fill": self.setTextFormat(self.style, 12),
-                         ".nofill": self.setTextFormat(self.style, 12),
-                         ".bold": self.setTextFormat(self.style, 12)}
+        self.commands = {".large": lambda: self.setTextFormat("bold", 15, self.indent, self.alignment),
+                         ".normal": lambda: self.setTextFormat(self.style, 12, self., self.alignment),
+                         ".italics": lambda: self.setTextFormat("italics", self.font, self.indent, self.alignment),
+                         ".regular": lambda: self.setTextFormat("normal", 12, self.indent, self.alignment),
+                         ".indent": lambda: self.setTextFormat(self.style, 12, self.indent, self.alignment),
+                         ".fill": lambda: self.setTextFormat(self.style, 12, self.indent, TA_JUSTIFY),
+                         ".nofill": lambda: self.setTextFormat(self.style, 12, self.indent, TA_LEFT),
+                         ".bold": lambda: self.setTextFormat("bold", 12, self.indent, self.alignment)}
 
-    def setStyle(self, command: str, style: str, font: int, indent: int):
+    def setStyle(self, command: str, indent=0, alignment=TA_LEFT):
         if command in self.commands:
-            return self.commands[command](style, font, indent)
+            self.indent = indent + self.indent
+            self.alignment = alignment
+            return self.commands[command]()
         raise ValueError("Please check the command. The provided command is", command)
 
-    def setTextFormat(self, style, font, indent):
-
+    def setTextFormat(self, style, font, indent, alignment):
         # updating the text style values
-        self.style, self.font, self.indent = style, font, indent
+        self.style, self.font = style, font
 
         custom_style = ParagraphStyle(
             'Custom_Style',
@@ -36,6 +39,7 @@ class FontSetter:
             fontName='Helvetica',
             fontSize=font,
             leading=15,
-            leftIndent=indent
+            leftIndent=indent,
+            alignment=alignment
         )
         return custom_style
