@@ -35,7 +35,7 @@ class TextGenerator:
             self.font_style = self.text_setter.setStyle(command=cmd)
 
     def __addParagraph(self) -> None:
-        if self.line:
+        if len(self.line) > 0:
             paragraph = Paragraph(" ".join(self.line), self.font_style)
             self.page_content.append(paragraph)
             self.line.clear()
