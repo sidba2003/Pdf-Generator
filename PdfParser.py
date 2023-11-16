@@ -1,5 +1,6 @@
 import PyPDF2
 from TextGenerator import TextGenerator
+import os
 
 
 class PdfParser:
