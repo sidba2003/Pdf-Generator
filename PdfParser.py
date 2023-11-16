@@ -23,6 +23,10 @@ class PdfParser:
                     self.generator.handleLine(line)
             self.generator.addContentsToDocument()
 
+        self.__printOutputLocation()
+
+
+    def __printOutputLocation(self) -> None:
         output_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output.pdf")
 
         print("PDF file generated successfully!")
