@@ -17,12 +17,12 @@ class TextGenerator:
 
     def handleLine(self, line: str) -> None:
         if line[0] == ".":
+            self.__addParagraph()
             self.__useCommand(line)
         else:
             self.line.append(line)
 
     def __useCommand(self, line: str) -> None:
-        self.__addParagraph()
         command_values = line.split(" ")
         cmd = command_values[0]
         if cmd == ".paragraph":
