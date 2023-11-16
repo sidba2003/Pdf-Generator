@@ -1,9 +1,7 @@
-import os.path
-
 import PyPDF2
 from TextGenerator import TextGenerator
 import sys
-from os import path
+import os
 
 
 class PdfParser:
