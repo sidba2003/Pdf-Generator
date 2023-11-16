@@ -23,6 +23,6 @@ class PdfParser:
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        raise ValueError("Please enter the correct number of arguments.Required 1, passed", len(sys.argv))
+        raise ValueError("Please enter the correct number of arguments. Required 1, passed", len(sys.argv))
     parser = PdfParser(sys.argv[1])
     parser.parsePdf()
