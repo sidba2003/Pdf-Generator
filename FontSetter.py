@@ -13,7 +13,7 @@ class FontSetter:
         self.indent = 0
         self.alignment = TA_LEFT
 
-        self.commands = {".large": lambda: self.setTextFormat("Heading1", 30, self.indent, self.alignment),
+        self.commands = {".large": lambda: self.setTextFormat("Heading1", 15, self.indent, self.alignment),
                          ".normal": lambda: self.setTextFormat(self.style, 12, self.indent, self.alignment),
                          ".italics": lambda: self.setTextFormat("Italic", self.font, self.indent, self.alignment),
                          ".regular": lambda: self.setTextFormat("Normal", self.font, self.indent, self.alignment),
