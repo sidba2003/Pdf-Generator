@@ -32,10 +32,17 @@ class FontSetter:
         # updating the text style values
         self.style, self.font, self.alignment = style, font, alignment
 
+        if style == "Heading1":
+            font_name = 'Helvetica-Bold'
+        elif style == "Italic":
+            font_name = 'Helvetica-Oblique'
+        else:
+            font_name = 'Helvetica'
+
         custom_style = ParagraphStyle(
             'Custom_Style',
             parent=self.styles[style],
-            fontName='Helvetica',
+            fontName=font_name,
             fontSize=font,
             leading=15,
             leftIndent=indent,
