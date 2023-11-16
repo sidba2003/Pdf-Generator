@@ -17,7 +17,7 @@ We get a formatted output PDF File, such as,
 
 ## Running the Code
 To run the code, go to the root folder of `Pdf-Generator/` from the command line and
-run the PdfParser.py file using Python. Running from the command line you will also 
+run the `PdfParser.py` file using Python. Running from the command line you will also 
 have to add the input PDF File's path as an argument.
 
 Running the code from the command line,
