@@ -1,6 +1,9 @@
+import os.path
+
 import PyPDF2
 from TextGenerator import TextGenerator
 import sys
+from os import path
 
 
 class PdfParser:
@@ -9,7 +12,7 @@ class PdfParser:
         self.generator = TextGenerator()
         self.file = file
 
-    def parsePdf(self) -> None:
+    def computePdf(self) -> None:
         with open(self.file, 'rb') as file:
             reader = PyPDF2.PdfReader(file)
 
@@ -20,9 +23,14 @@ class PdfParser:
                     self.generator.handleLine(line)
             self.generator.addContentsToDocument()
 
+        output_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output.pdf")
+
+        print("PDF file generated successfully!")
+        print("The generated PDF file is located at", output_file_path)
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        raise ValueError("Please enter the correct number of arguments. Required 1, passed", len(sys.argv))
+        raise ValueError("Please enter the correct number of arguments. Required 1, passed", len(sys.argv) - 1)
     parser = PdfParser(sys.argv[1])
-    parser.parsePdf()
+    parser.computePdf()
