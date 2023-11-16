@@ -25,12 +25,11 @@ class PdfParser:
 
         self.__printOutputLocation()
 
-
     def __printOutputLocation(self) -> None:
-        output_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output.pdf")
+        self.output_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output.pdf")
 
         print("PDF file generated successfully!")
-        print("The generated PDF file is located at", output_file_path)
+        print("The generated PDF file is located at", self.output_file_path)
 
 
 if __name__ == '__main__':
