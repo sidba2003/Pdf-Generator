@@ -13,14 +13,14 @@ class FontSetter:
         self.indent = 0
         self.alignment = TA_LEFT
 
-        self.commands = {".large": lambda: self.setTextFormat("Heading1", 15, self.indent, self.alignment),
-                         ".normal": lambda: self.setTextFormat(self.style, 12, self.indent, self.alignment),
-                         ".italics": lambda: self.setTextFormat("Italic", self.font, self.indent, self.alignment),
-                         ".regular": lambda: self.setTextFormat("Normal", self.font, self.indent, self.alignment),
-                         ".indent": lambda: self.setTextFormat(self.style, self.font, self.indent, self.alignment),
-                         ".fill": lambda: self.setTextFormat(self.style, self.font, self.indent, TA_JUSTIFY),
-                         ".nofill": lambda: self.setTextFormat(self.style, self.font, self.indent, TA_LEFT),
-                         ".bold": lambda: self.setTextFormat("Heading1", self.font, self.indent, self.alignment)}
+        self.commands = {".large": lambda: self.__setTextFormat("Heading1", 15, self.indent, self.alignment),
+                         ".normal": lambda: self.__setTextFormat(self.style, 12, self.indent, self.alignment),
+                         ".italics": lambda: self.__setTextFormat("Italic", self.font, self.indent, self.alignment),
+                         ".regular": lambda: self.__setTextFormat("Normal", self.font, self.indent, self.alignment),
+                         ".indent": lambda: self.__setTextFormat(self.style, self.font, self.indent, self.alignment),
+                         ".fill": lambda: self.__setTextFormat(self.style, self.font, self.indent, TA_JUSTIFY),
+                         ".nofill": lambda: self.__setTextFormat(self.style, self.font, self.indent, TA_LEFT),
+                         ".bold": lambda: self.__setTextFormat("Heading1", self.font, self.indent, self.alignment)}
 
     def setStyle(self, command: str, indent=0) -> ParagraphStyle:
         if command in self.commands:
@@ -28,7 +28,7 @@ class FontSetter:
             return self.commands[command]()
         raise ValueError("Please check the command. The provided command is", command)
 
-    def setTextFormat(self, style, font, indent, alignment) -> ParagraphStyle:
+    def __setTextFormat(self, style, font, indent, alignment) -> ParagraphStyle:
         # updating the text style values
         self.style, self.font, self.alignment = style, font, alignment
 
