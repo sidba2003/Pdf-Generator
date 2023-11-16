@@ -4,7 +4,7 @@ from reportlab.lib.enums import TA_LEFT, TA_JUSTIFY
 
 class FontSetter:
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.styles = getSampleStyleSheet()
 
         # the default values for the text style and font
@@ -22,13 +22,13 @@ class FontSetter:
                          ".nofill": lambda: self.setTextFormat(self.style, self.font, self.indent, TA_LEFT),
                          ".bold": lambda: self.setTextFormat("Heading1", self.font, self.indent, self.alignment)}
 
-    def setStyle(self, command: str, indent=0):
+    def setStyle(self, command: str, indent=0) -> ParagraphStyle:
         if command in self.commands:
             self.indent = self.indent + (indent * 10)
             return self.commands[command]()
         raise ValueError("Please check the command. The provided command is", command)
 
-    def setTextFormat(self, style, font, indent, alignment):
+    def setTextFormat(self, style, font, indent, alignment) -> ParagraphStyle:
         # updating the text style values
         self.style, self.font, self.alignment = style, font, alignment
 

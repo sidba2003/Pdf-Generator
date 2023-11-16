@@ -34,7 +34,7 @@ class TextGenerator:
         else:
             self.font_style = self.text_setter.setStyle(command=cmd)
 
-    def __addParagraph(self):
+    def __addParagraph(self) -> None:
         if self.line:
             paragraph = Paragraph(" ".join(self.line), self.font_style)
             self.page_content.append(paragraph)
@@ -42,7 +42,4 @@ class TextGenerator:
 
     def addContentsToDocument(self) -> None:
         self.__addParagraph()
-        for i in self.page_content:
-            print(i)
-            print()
         self.document.build(self.page_content)
