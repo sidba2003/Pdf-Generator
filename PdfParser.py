@@ -1,5 +1,5 @@
 import PyPDF2
-import TextGenerator
+from TextGenerator import TextGenerator
 
 
 class PdfParser:
@@ -13,9 +13,10 @@ class PdfParser:
 
             for page in reader.pages:
                 page_text = page.extract_text()
-                page_lines = page_text.split("/n")
+                page_lines = page_text.split("\n")
                 for line in page_lines:
                     self.generator.handleLine(line)
+            self.generator.addContentsToDocument()
 
 
 if __name__ == '__main__':

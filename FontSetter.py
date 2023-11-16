@@ -8,19 +8,19 @@ class FontSetter:
         self.styles = getSampleStyleSheet()
 
         # the default values for the text style and font
-        self.style = "normal"
+        self.style = "Normal"
         self.font = 12
         self.indent = 0
         self.alignment = TA_LEFT
 
-        self.commands = {".large": lambda: self.setTextFormat("Bold", 15, self.indent, self.alignment),
+        self.commands = {".large": lambda: self.setTextFormat("Heading1", 30, self.indent, self.alignment),
                          ".normal": lambda: self.setTextFormat(self.style, 12, self.indent, self.alignment),
-                         ".italics": lambda: self.setTextFormat("Italics", self.font, self.indent, self.alignment),
+                         ".italics": lambda: self.setTextFormat("Italic", self.font, self.indent, self.alignment),
                          ".regular": lambda: self.setTextFormat("Normal", self.font, self.indent, self.alignment),
                          ".indent": lambda: self.setTextFormat(self.style, self.font, self.indent, self.alignment),
                          ".fill": lambda: self.setTextFormat(self.style, self.font, self.indent, TA_JUSTIFY),
                          ".nofill": lambda: self.setTextFormat(self.style, self.font, self.indent, TA_LEFT),
-                         ".bold": lambda: self.setTextFormat("Bold", self.font, self.indent, self.alignment)}
+                         ".bold": lambda: self.setTextFormat("Heading1", self.font, self.indent, self.alignment)}
 
     def setStyle(self, command: str, indent=0):
         if command in self.commands:
