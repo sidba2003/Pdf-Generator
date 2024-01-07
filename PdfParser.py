@@ -5,7 +5,6 @@ import os
 
 
 class PdfParser:
-
     def __init__(self, file) -> None:
         self.generator = TextGenerator()
         self.file = file
