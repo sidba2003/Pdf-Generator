@@ -3,7 +3,6 @@ from reportlab.lib.enums import TA_LEFT, TA_JUSTIFY
 
 
 class FontSetter:
-
     def __init__(self) -> None:
         self.styles = getSampleStyleSheet()
 
