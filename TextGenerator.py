@@ -4,7 +4,6 @@ from FontSetter import FontSetter
 
 
 class TextGenerator:
-
     def __init__(self) -> None:
         self.text_setter = FontSetter()
         self.font_style = self.text_setter.setStyle(command=".normal")
